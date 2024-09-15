@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^/]+)/?$ $1.php [L]
+</IfModule>
+Header set Access-Control-Allow-Origin "*"
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^chapter/([0-9]+)$ chapter.php?id=$1 [QSA,L]
+RewriteRule ^manga/([^/]+)/?$ manga.php?slug=$1 [QSA,L]
